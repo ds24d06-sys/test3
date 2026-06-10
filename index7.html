@@ -1,0 +1,236 @@
+
+
+Skip to content
+Using Шинэ Монгол Технологийн Их Сургууль Mail with screen readers
+
+Conversations
+Graduating soon? Keep all your emails and other files after you graduate.
+Copy your emails, files, and photos to another Google Account so you'll still have access
+ 
+Program Policies
+Powered by Google
+Last account activity: 18 hours ago
+Details
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мотоциклын аялал</title>
+    <link rel="stylesheet" href="lab7.css" />
+</head>
+<body>
+
+  <div id="sky"></div>
+
+  <div id="moon"></div>
+
+  <div id="sun"></div>
+
+  <div id="mountains">
+    <div class="mtn-far"></div>
+    <div class="mtn-near"></div>
+  </div>
+
+
+  <div class="tree-layer" id="tl-far">
+  </div>
+
+
+  <div class="tree-layer" id="tl-near">
+  </div>
+
+ 
+  <div id="ground"></div>
+
+
+  <div id="road">
+    <div id="road-dashes">
+    </div>
+  </div>
+
+  <div class="tree-layer" id="tl-bush">
+  </div>
+
+  <div id="moto-wrap">
+    <div class="puff"></div>
+    <div class="puff"></div>
+    <div class="puff"></div>
+
+    <div class="headlight-glow"></div>
+
+    <!-- Motorcycle SVG -->
+    <svg width="240" height="110" viewBox="0 0 240 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- === EXHAUST PIPE === -->
+      <rect x="26" y="72" width="30" height="6" rx="3" fill="#555"/>
+      <rect x="25" y="69" width="16" height="12" rx="6" fill="#444"/>
+
+      <!-- === FRAME === -->
+      <path d="M55 80 L90 40 L160 40 L190 80" stroke="#888" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M90 40 L100 80" stroke="#777" stroke-width="4" stroke-linecap="round"/>
+      <path d="M155 42 L170 80" stroke="#777" stroke-width="4" stroke-linecap="round"/>
+
+      <!-- === ENGINE BODY === -->
+      <rect x="95" y="55" width="65" height="32" rx="6" fill="#666"/>
+      <rect x="100" y="60" width="55" height="20" rx="4" fill="#444"/>
+      <!-- engine fins -->
+      <line x1="110" y1="60" x2="110" y2="80" stroke="#555" stroke-width="1.5"/>
+      <line x1="120" y1="60" x2="120" y2="80" stroke="#555" stroke-width="1.5"/>
+      <line x1="130" y1="60" x2="130" y2="80" stroke="#555" stroke-width="1.5"/>
+      <line x1="140" y1="60" x2="140" y2="80" stroke="#555" stroke-width="1.5"/>
+
+      <!-- === FUEL TANK === -->
+      <ellipse cx="128" cy="45" rx="32" ry="14" fill="#b02020"/>
+      <ellipse cx="128" cy="44" rx="28" ry="10" fill="#cc2828"/>
+      <!-- tank shine -->
+      <ellipse cx="120" cy="40" rx="10" ry="4" fill="rgba(255,255,255,0.18)"/>
+
+      <!-- === SEAT === -->
+      <path d="M98 40 Q128 30 160 38" stroke="#222" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path d="M98 40 Q128 30 160 38" stroke="#333" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+      <!-- === FRONT FORK === -->
+      <line x1="55" y1="78" x2="68" y2="42" stroke="#888" stroke-width="5" stroke-linecap="round"/>
+      <line x1="63" y1="78" x2="74" y2="44" stroke="#888" stroke-width="4" stroke-linecap="round"/>
+
+      <!-- === HANDLEBAR === -->
+      <line x1="72" y1="44" x2="92" y2="36" stroke="#aaa" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="72" cy="43" r="4" fill="#999"/>
+      <!-- mirrors -->
+      <line x1="80" y1="37" x2="76" y2="28" stroke="#aaa" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="76" cy="26" rx="4" ry="3" fill="#88aacc"/>
+
+      <!-- === HEADLIGHT === -->
+      <ellipse cx="203" cy="68" rx="12" ry="9" fill="#FFD700" opacity="0.9"/>
+      <ellipse cx="203" cy="68" rx="8" ry="6" fill="#FFEEAA"/>
+
+      <!-- === FENDER FRONT === -->
+      <path d="M42 70 Q55 55 68 70" stroke="#b02020" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+      <!-- === FENDER REAR === -->
+      <path d="M168 72 Q178 60 190 72" stroke="#b02020" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+    </svg>
+
+    <!-- REAR WHEEL -->
+    <div class="wheel-wrap" id="wheel-rear">
+      <svg class="wheel-svg" width="46" height="46" viewBox="0 0 46 46">
+        <circle cx="23" cy="23" r="21" stroke="#555" stroke-width="4" fill="#222"/>
+        <circle cx="23" cy="23" r="13" stroke="#777" stroke-width="2" fill="none"/>
+        <circle cx="23" cy="23" r="5" fill="#999"/>
+        <line x1="23" y1="2"  x2="23" y2="44" stroke="#666" stroke-width="1.5"/>
+        <line x1="2"  y1="23" x2="44" y2="23" stroke="#666" stroke-width="1.5"/>
+        <line x1="7"  y1="7"  x2="39" y2="39" stroke="#666" stroke-width="1.5"/>
+        <line x1="39" y1="7"  x2="7"  y2="39" stroke="#666" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <!-- FRONT WHEEL -->
+    <div class="wheel-wrap" id="wheel-front">
+      <svg class="wheel-svg" width="46" height="46" viewBox="0 0 46 46">
+        <circle cx="23" cy="23" r="21" stroke="#555" stroke-width="4" fill="#222"/>
+        <circle cx="23" cy="23" r="13" stroke="#777" stroke-width="2" fill="none"/>
+        <circle cx="23" cy="23" r="5" fill="#999"/>
+        <line x1="23" y1="2"  x2="23" y2="44" stroke="#666" stroke-width="1.5"/>
+        <line x1="2"  y1="23" x2="44" y2="23" stroke="#666" stroke-width="1.5"/>
+        <line x1="7"  y1="7"  x2="39" y2="39" stroke="#666" stroke-width="1.5"/>
+        <line x1="39" y1="7"  x2="7"  y2="39" stroke="#666" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <!-- DOG RIDER SVG -->
+    <svg width="240" height="110" viewBox="0 0 240 110" style="position:absolute;top:0;left:0;" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- === BODY (sitting on seat) === -->
+      <ellipse cx="128" cy="50" rx="18" ry="14" fill="#c8a060"/>
+      <!-- torso shading -->
+      <ellipse cx="128" cy="50" rx="14" ry="10" fill="#d4ac70"/>
+
+      <!-- === JACKET / VEST === -->
+      <path d="M112 50 Q128 38 144 50 L144 62 Q128 66 112 62 Z" fill="#8B2020" opacity="0.85"/>
+      <!-- jacket zipper line -->
+      <line x1="128" y1="40" x2="128" y2="62" stroke="#cc4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+      <!-- === TAIL === -->
+      <path d="M145 52 Q158 42 162 48 Q166 54 158 56" stroke="#c8a060" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+      <!-- === FRONT LEGS / PAWS on handlebar === -->
+      <!-- left arm -->
+      <path d="M116 52 Q105 50 94 44" stroke="#c8a060" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <circle cx="93" cy="43" r="5" fill="#b89050"/>
+      <!-- right arm -->
+      <path d="M118 56 Q108 58 98 55" stroke="#c8a060" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <circle cx="97" cy="55" r="5" fill="#b89050"/>
+
+      <!-- === NECK === -->
+      <rect x="122" y="28" width="12" height="14" rx="5" fill="#c8a060"/>
+
+      <!-- === HEAD === -->
+      <ellipse cx="128" cy="22" rx="16" ry="14" fill="#d4ac70"/>
+      <!-- head shading top -->
+      <ellipse cx="128" cy="18" rx="12" ry="8" fill="#deb880"/>
+
+      <!-- === SNOUT === -->
+      <ellipse cx="128" cy="27" rx="9" ry="6" fill="#c49a60"/>
+      <ellipse cx="128" cy="26" rx="6" ry="3.5" fill="#b88850"/>
+      <!-- nose -->
+      <ellipse cx="128" cy="23" rx="4" ry="2.5" fill="#222"/>
+      <!-- nostrils -->
+      <circle cx="126" cy="24" r="1" fill="#111"/>
+      <circle cx="130" cy="24" r="1" fill="#111"/>
+
+      <!-- === TONGUE === -->
+      <g class="tongue-anim">
+        <ellipse cx="128" cy="31" rx="4" ry="5" fill="#e05080"/>
+        <ellipse cx="128" cy="34" rx="4" ry="3" fill="#d04070"/>
+      </g>
+
+      <!-- === EYES === -->
+      <circle cx="121" cy="18" r="4.5" fill="#fff"/>
+      <circle cx="135" cy="18" r="4.5" fill="#fff"/>
+      <circle cx="122" cy="18" r="2.8" fill="#3a2010"/>
+      <circle cx="136" cy="18" r="2.8" fill="#3a2010"/>
+      <!-- pupils shine -->
+      <circle cx="123" cy="17" r="1" fill="#fff"/>
+      <circle cx="137" cy="17" r="1" fill="#fff"/>
+
+      <!-- === EARS with flap animation === -->
+      <!-- Left ear -->
+      <g class="ear-l" style="transform-origin:118px 14px;">
+        <ellipse cx="116" cy="10" rx="7" ry="9" fill="#c8a060" transform="rotate(-15,116,14)"/>
+        <ellipse cx="116" cy="10" rx="4" ry="6" fill="#e8c090" transform="rotate(-15,116,14)"/>
+      </g>
+      <!-- Right ear -->
+      <g class="ear-r" style="transform-origin:138px 14px;">
+        <ellipse cx="140" cy="10" rx="7" ry="9" fill="#c8a060" transform="rotate(15,140,14)"/>
+        <ellipse cx="140" cy="10" rx="4" ry="6" fill="#e8c090" transform="rotate(15,140,14)"/>
+      </g>
+
+      <!-- === HELMET / GOGGLES === -->
+      <!-- helmet -->
+      <path d="M112 20 Q113 6 128 4 Q143 6 144 20 Q140 15 128 14 Q116 15 112 20Z" fill="#882020"/>
+      <path d="M112 20 Q113 8 128 6 Q143 8 144 20" stroke="#aa3030" stroke-width="1.5" fill="none"/>
+      <!-- goggles frame -->
+      <rect x="115" y="15" width="26" height="8" rx="4" fill="#333" opacity="0.85"/>
+      <!-- goggle lenses -->
+      <ellipse cx="122" cy="19" rx="5" ry="4" fill="#4488cc" opacity="0.7"/>
+      <ellipse cx="134" cy="19" rx="5" ry="4" fill="#4488cc" opacity="0.7"/>
+      <!-- goggle shine -->
+      <ellipse cx="120" cy="17" rx="2" ry="1.5" fill="rgba(255,255,255,0.4)"/>
+      <ellipse cx="132" cy="17" rx="2" ry="1.5" fill="rgba(255,255,255,0.4)"/>
+      <!-- goggle bridge -->
+      <rect x="127" y="17" width="2" height="4" rx="1" fill="#555"/>
+
+      <!-- === SCARF === -->
+      <path d="M114 32 Q128 36 142 32 Q140 38 128 40 Q116 38 114 32Z" fill="#cc4444" opacity="0.9"/>
+      <!-- scarf tail -->
+      <path d="M140 33 Q152 28 155 32 Q153 38 148 36" stroke="#cc4444" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+    </svg>
+
+  </div><!-- end #moto-wrap -->
+<script src="lab7.js"></script>
+</body>
+
+</html>

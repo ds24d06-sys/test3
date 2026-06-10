@@ -1,0 +1,283 @@
+
+Details
+    :root {
+      --sky-top: #1a1a4a;
+      --sky-bot: #2a3a6a;
+      --ground: #1a2e18;
+      --road: #2a2a2a;
+      --road-line: #c8a020;
+      --tree-far: #1e3a22;
+      --tree-near: #0f2214;
+      --bush: #163018;
+      --mtn-far: #1e2e3e;
+      --mtn-near: #162a1e;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      width:100vw; height:100vh;
+      overflow:hidden;
+      background: var(--sky-top);
+    }
+
+    /* ========= SKY ========= */
+    #sky {
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bot) 100%);
+      animation: dayNightSky 20s linear infinite;
+    }
+    @keyframes dayNightSky {
+      0%,45%   { background: linear-gradient(180deg,#1a1a4a 0%,#2a3a6a 100%); }
+      50%,95%  { background: linear-gradient(180deg,#1e90d0 0%,#87d4f5 100%); }
+      100%     { background: linear-gradient(180deg,#1a1a4a 0%,#2a3a6a 100%); }
+    }
+
+    /* ========= STARS ========= */
+    .star {
+      position:absolute;
+      background:#fff;
+      border-radius:50%;
+      animation: twinkle 2s ease-in-out infinite alternate, dayNightStar 20s linear infinite;
+    }
+    @keyframes twinkle { from{opacity:.1} to{opacity:.9} }
+    @keyframes dayNightStar {
+      0%,45%  { opacity:1; }
+      50%,95% { opacity:0; }
+      100%    { opacity:1; }
+    }
+
+    /* ========= MOON ========= */
+    #moon {
+      position:absolute;
+      top:50px; left:80px;
+      width:52px; height:52px;
+      background:#e8e8c8;
+      border-radius:50%;
+      box-shadow:0 0 24px 8px rgba(220,230,200,0.4);
+      animation: moonMove 20s linear infinite;
+    }
+    @keyframes moonMove {
+      0%   { opacity:1; transform:translateX(0); }
+      45%  { opacity:1; transform:translateX(40vw); }
+      50%  { opacity:0; transform:translateX(40vw); }
+      55%  { opacity:0; transform:translateX(-10vw); }
+      95%  { opacity:0; transform:translateX(20vw); }
+      100% { opacity:1; transform:translateX(0); }
+    }
+
+    /* ========= SUN ========= */
+    #sun {
+      position:absolute;
+      top:40px; left:10vw;
+      width:60px; height:60px;
+      background:#FFD700;
+      border-radius:50%;
+      box-shadow:0 0 40px 20px rgba(255,220,0,0.5);
+      animation: sunMove 20s linear infinite;
+    }
+    @keyframes sunMove {
+      0%,48% { opacity:0; transform:translateX(-10vw); }
+      52%    { opacity:1; transform:translateX(0); }
+      95%    { opacity:1; transform:translateX(65vw); }
+      100%   { opacity:0; transform:translateX(65vw); }
+    }
+
+    /* ========= GROUND ========= */
+    #ground {
+      position:absolute;
+      bottom:0; width:100%; height:28%;
+      animation: dayNightGround 20s linear infinite;
+    }
+    @keyframes dayNightGround {
+      0%,45%  { background:#1a2e18; }
+      50%,95% { background:#4a8a30; }
+      100%    { background:#1a2e18; }
+    }
+
+    /* ========= ROAD ========= */
+    #road {
+      position:absolute;
+      bottom:0; width:100%; height:30%;
+      animation: dayNightRoad 15s linear infinite;
+    }
+    @keyframes dayNightRoad {
+      0%,45%  { background:#222; }
+      50%,95% { background:#555; }
+      100%    { background:#222; }
+    }
+
+    /* ========= ROAD DASHES ========= */
+    #road-dashes {
+      position:absolute;
+      top:30%;
+      width:200%;
+      display:flex;
+      gap:60px;
+      animation: moveDash 0.5s linear infinite;
+    }
+    @keyframes moveDash { from{transform:translateX(0)} to{transform:translateX(-140px)} }
+    .dash {
+      flex-shrink:0;
+      width:60px; height:6px;
+      background: var(--road-line);
+      border-radius:3px;
+    }
+
+    /* ========= MOUNTAINS ========= */
+    #mountains {
+      position:absolute;
+      bottom:28%; width:100%; height:35%;
+      overflow:hidden;
+    }
+    .mtn-far, .mtn-near { position:absolute; bottom:0; width:100%; height:100%; }
+
+    .mtn-far {
+      background: #2a3e50;
+      clip-path: polygon(0% 100%, 0% 60%, 6% 30%, 12% 60%, 18% 20%, 25% 55%, 32% 15%, 40% 50%, 47% 25%, 55% 55%, 62% 10%, 70% 50%, 78% 30%, 85% 55%, 92% 20%, 100% 45%, 100% 100%);
+      animation: dayNightMtnFar 20s linear infinite;
+    }
+    @keyframes dayNightMtnFar {
+      0%,45%  { background:#2a3e50; }
+      50%,95% { background:#7a9aaa; }
+      100%    { background:#2a3e50; }
+    }
+
+    .mtn-near {
+      background: #1a3028;
+      clip-path: polygon(0% 100%, 0% 70%, 8% 40%, 16% 70%, 24% 30%, 33% 65%, 42% 25%, 50% 60%, 58% 35%, 66% 65%, 74% 28%, 82% 60%, 90% 38%, 100% 65%, 100% 100%);
+      animation: dayNightMtnNear 20s linear infinite;
+    }
+    @keyframes dayNightMtnNear {
+      0%,45%  { background:#1a3028; }
+      50%,95% { background:#4a6858; }
+      100%    { background:#1a3028; }
+    }
+
+    /* ========= TREE / BUSH LAYERS ========= */
+    .tree-layer {
+      position:absolute;
+      bottom:28%;
+      display:flex;
+      gap: 40px;
+      align-items:flex-end;
+      white-space:nowrap;
+      width: max-content;
+    }
+
+    #tl-far  { animation: scrollFar 91s linear infinite; }
+    #tl-near { animation: scrollNear 100s linear infinite; }
+    #tl-bush {
+      bottom:calc(28% - 2px);
+      animation: scrollBush 100s linear infinite;
+    }
+
+    @keyframes scrollFar  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    @keyframes scrollNear { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    @keyframes scrollBush { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    .tree {
+      display:inline-block;
+      position:relative;
+      margin-right:18px;
+      vertical-align:bottom;
+      flex-shrink:0;
+    }
+    .tree .trunk {
+      position:absolute;
+      bottom:0; left:50%;
+      transform:translateX(-50%);
+      background:#5a3a10;
+      border-radius:2px;
+    }
+    .tree .foliage {
+      position:relative;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .bush-item {
+      display:inline-block;
+      border-radius:50% 50% 45% 45%;
+      margin-right:12px;
+      vertical-align:bottom;
+      flex-shrink:0;
+      animation: dayNightBush 20s linear infinite;
+    }
+    @keyframes dayNightBush {
+      0%,45%  { background:#163018; }
+      50%,95% { background:#2e6830; }
+      100%    { background:#163018; }
+    }
+
+    /* ========= MOTO WRAPPER ========= */
+    #moto-wrap {
+      position:absolute;
+      bottom: calc(28% * 0.55 + 2px);
+      left: 50%;
+      transform:translateX(50%);
+      width:240px;
+      animation: vibrate 0.14s linear infinite;
+      z-index:20;
+    }
+    @keyframes vibrate {
+      0%   { transform:translateX(-50%) translateY(0px); }
+      25%  { transform:translateX(-50%) translateY(-2px) rotate(-0.4deg); }
+      75%  { transform:translateX(-50%) translateY(2px) rotate(0.4deg); }
+      100% { transform:translateX(-50%) translateY(0px); }
+    }
+
+    /* ========= WHEELS ========= */
+    .wheel-wrap {
+      position:absolute;
+      bottom:-10px;
+    ;
+      animation: spin 0.38s linear infinite;
+    }
+    @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+
+    #wheel-rear  { left: 148px; }
+    #wheel-front { left: 10px; }
+
+    .wheel-svg { display:block; }
+
+    /* ========= EXHAUST SMOKE ========= */
+    .puff {
+      position:absolute;
+      border-radius:50%;
+      background:rgba(180,180,180,0.6);
+      left:2px;
+      right:auto;
+      animation: puffAnim 1.1s ease-out infinite;
+    }
+    .puff:nth-child(1){ width:10px;height:10px; bottom:32px; animation-delay:0s; }
+    .puff:nth-child(2){ width:16px;height:16px; bottom:32px; animation-delay:0.37s; }
+    .puff:nth-child(3){ width:20px;height:20px; bottom:32px; animation-delay:0.74s; }
+    @keyframes puffAnim {
+      0%  { opacity:1; transform:translateX(0) scale(1); }
+      100%{ opacity:0; transform:translateX(-60px) scale(1.6); }
+    }
+
+    /* ========= EAR FLAP ========= */
+    .ear-l { animation: earL 0.45s ease-in-out infinite alternate; transform-origin:bottom center; }
+    .ear-r { animation: earR 0.45s ease-in-out infinite alternate; transform-origin:bottom center; }
+    @keyframes earL { from{transform:rotate(-8deg)} to{transform:rotate(14deg)} }
+    @keyframes earR { from{transform:rotate(8deg)}  to{transform:rotate(-14deg)} }
+
+    /* ========= TONGUE ========= */
+    .tongue-anim { animation: tongueWag 0.6s ease-in-out infinite alternate; transform-origin:top center; }
+    @keyframes tongueWag { from{transform:rotate(-10deg)} to{transform:rotate(10deg)} }
+
+    /* ========= HEADLIGHT GLOW ========= */
+    .headlight-glow {
+      position:absolute;
+      bottom:33px; left:auto; right:-6%;
+      width:60px; height:25px;
+      background:radial-gradient(ellipse at right, rgba(255,240,100,0.5) 0%, transparent 70%);
+      animation: dayNightLight 20s linear infinite;
+    }
+    @keyframes dayNightLight {
+      0%,45%  { opacity:1; }
+      50%,95% { opacity:0.2; }
+      100%    { opacity:1; }
+    }
